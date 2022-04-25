@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-const puerto = 2000;
+const puerto = process.env.PORT || 2000;
 
 //motor de plantillas
 app.set("view engine", "ejs");
