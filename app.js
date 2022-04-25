@@ -1,7 +1,18 @@
 const express = require("express");
 const app = express();
 
-const puerto = process.env.PORT || 3000;
+require('dotenv').config()
+
+const puerto = process.env.PORT || 3000; // puerto auto de heroku
+//conexion a base de datos mongoDB
+const mongoose = require('mongoose');//mongoosejs.com
+const { route } = require("./router/rutasWeb");
+
+const uri =`mongodb+srv://johinnerMC:${process.env.PASSWORD}@cluster0.tfow3.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
+
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(()=> console.log('conectado a mongodb')) 
+  .catch(e => console.log('error de conexión', e))
 
 //motor de plantillas
 app.set("view engine", "ejs");
@@ -9,14 +20,9 @@ app.set("views", __dirname + "/views"); //carpeta ejs
 
 app.use(express.static(__dirname + "/public")); // carpeta public
 
-app.get("/", (req, res) => {
-  res.render("index", { title: "title dinamico" });//renderizar ejs a html
-});
-
-app.get("/app", (req, res) => {
-  //res.end("<h1>Mine Aplicaciones</h1>");
-  res.render('app', {titleApp: 'Mine Aplicaciones'})
-});
+//rutas web
+app.use('/', require('./router/rutasWeb'))
+app.use('/mascotas', require('./router/mascotas'))
 
 //Middleware
 app.use((req, res, next) => {
@@ -25,4 +31,5 @@ app.use((req, res, next) => {
 
 app.listen(puerto, () => {
   console.log(`visita el puerlo "http://localhost:${puerto}"`);
+  
 });

@@ -1,0 +1,31 @@
+<%- include('template/cabecera',{titleWeb: 'index aplicacion'})%>
+
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Accion</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+            <% if (arrayMascotasDB.length > 0) { %>
+                <% arrayMascotasDB.forEach(element => { %>
+                    <tr>
+                        <th scope="row"><%=element.id%></th>
+                        <td><%= element.nombre %> </td>
+                        <td><%= element.descripcion %> </td>
+                        <td>@mdo</td>
+                      </tr>
+                <% }) %>
+           <% } %>
+ 
+        </tbody>
+      </table>
+
+</div>
+    
+<%- include('template/footer')%>
