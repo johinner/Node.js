@@ -2,14 +2,13 @@ const express = require("express");
 const app = express();
 
 require('dotenv').config()
-const MONGODB_URI = 'mongodb+srv://johinnerMC:5721@cluster0.tfow3.mongodb.net/veterinaria?retryWrites=true&w=majority'
-const puerto = process.env.PORT || 8000; // puerto auto de heroku
+
+const puerto = process.env.PORT || 9000; // puerto auto de heroku
 //conexion a base de datos mongoDB
 const mongoose = require('mongoose');//mongoosejs.com
 const { route } = require("./router/rutasWeb");
 
-//const uri =`mongodb+srv://johinnerMC:${process.env.PASSWORD}@cluster0.tfow3.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
-const uri = MONGODB_URI;
+const uri = process.env.MONGODB_URI;
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(()=> console.log('conectado a mongodb')) 
