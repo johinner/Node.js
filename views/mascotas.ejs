@@ -1,6 +1,11 @@
 <%- include('template/cabecera',{titleWeb: 'index aplicacion'})%>
 
 <div class="container">
+
+  <div class="d-grid gap-2 m-3">
+    <a class="btn btn-primary" href="/mascotas/crear">Añadir Nueva Informacion</a>
+  </div>
+
     <table class="table">
         <thead>
           <tr>
@@ -18,7 +23,8 @@
                         <th scope="row"><%=element.id%></th>
                         <td><%= element.nombre %> </td>
                         <td><%= element.descripcion %> </td>
-                        <td>@mdo</td>
+                        <td><a href="mascotas/<%=element.id%>"
+                          class="btn btn-warning btn-sm">Editar</a></td>
                       </tr>
                 <% }) %>
            <% } %>

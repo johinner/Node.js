@@ -1,0 +1,28 @@
+<%- include('template/cabecera',{titleWeb: 'Detalles'})%>
+<div class="container">
+  <h1>Detalle</h1>
+  <% if (error) { %>
+  <p><%= mensaje %></p>
+  <a href="/mascotas" class="btn btn-dark">vorver lista</a>
+  <% } %> <% if (!error) { %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Accion</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <th scope="row"><%=element.id%></th>
+        <td><%= element.nombre %></td>
+        <td><%= element.descripcion %></td>
+        <td>a espera</td>
+      </tr>
+    </tbody>
+  </table>
+  <% } %>
+</div>
