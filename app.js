@@ -3,7 +3,7 @@ const app = express();
 
 require('dotenv').config()
 
-const puerto = process.env.PORT || 3000; // puerto auto de heroku
+const puerto = process.env.PORT || 5000; // puerto auto de heroku
 //conexion a base de datos mongoDB
 const mongoose = require('mongoose');//mongoosejs.com
 const { route } = require("./router/rutasWeb");
