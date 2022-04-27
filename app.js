@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-const puerto = process.env.PORT || 12000; // puerto auto de heroku
+const puerto = process.env.PORT || 7000; // puerto auto de heroku
 //conexion a base de datos mongoDB
 const mongoose = require('mongoose');//mongoosejs.com
 const { route } = require("./router/rutasWeb");
